@@ -10,6 +10,22 @@ sklearn <- NULL
   # try(reticulate::use_virtualenv('./r-reticulate'),
   #     silent = TRUE)
   try(reticulate::py_install(
+    "Cython",
+    #envname = "r-reticulate",
+    pip = TRUE,
+    pip_options = "--upgrade",
+    pip_ignore_installed = TRUE
+  ),
+  silent = TRUE)
+  try(reticulate::py_install(
+    "scikit-learn",
+    #envname = "r-reticulate",
+    pip = TRUE,
+    pip_options = "--upgrade",
+    pip_ignore_installed = TRUE
+  ),
+  silent = TRUE)
+  try(reticulate::py_install(
     "mlsauce",
     #envname = "r-reticulate",
     pip = TRUE,
