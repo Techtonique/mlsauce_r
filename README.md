@@ -2,6 +2,7 @@
 
 **Miscellaneous Statistical/Machine learning stuff.**
 
+[![r-universe](https://techtonique.r-universe.dev/badges/mlsauce)](https://techtonique.r-universe.dev/mlsauce)
 [![CodeFactor](https://www.codefactor.io/repository/github/techtonique/mlsauce_r/badge)](https://www.codefactor.io/repository/github/techtonique/mlsauce_r)
 
 R version of the Python package [mlsauce](https://github.com/Techtonique/mlsauce).
