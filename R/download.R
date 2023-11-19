@@ -20,7 +20,7 @@ download <-
            dataset = "Boston",
            source = "https://cran.r-universe.dev/")
   {
-    as.data.frame(mlsauce::ms$download(
+    as.data.frame(ms$download(
       pkgname = pkgname,
       dataset = dataset,
       source = source
