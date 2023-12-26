@@ -42,7 +42,7 @@ sklearn <- NULL
   ),
   silent = TRUE)
   try(reticulate::py_install(
-    "mlsauce",
+    "git+https://github.com/Techtonique/mlsauce.git@feature-branch",
     envname = "./r-reticulate",
     pip = TRUE,
     pip_options = "--upgrade",
