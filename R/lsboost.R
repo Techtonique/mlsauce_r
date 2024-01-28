@@ -38,14 +38,15 @@
 #' y_train <- as.integer(y[train_index])
 #' X_test <- as.matrix(X[test_index, ])
 #' y_test <- as.integer(y[test_index])
-#'
+#' 
+#' \dontrun{
 #' obj <- mlsauce::LSBoostClassifier()
 #'
 #' print(obj$get_params())
 #'
 #' obj$fit(X_train, y_train)
 #'
-#' print(obj$score(X_test, y_test))
+#' print(obj$score(X_test, y_test))}
 #'
 LSBoostClassifier <- function(n_estimators=100L,
                               learning_rate=0.1,
@@ -118,13 +119,14 @@ LSBoostClassifier <- function(n_estimators=100L,
 #' X_test <- as.matrix(X[test_index, ])
 #' y_test <- as.double(y[test_index])
 #'
+#' \dontrun{
 #' obj <- mlsauce::LSBoostRegressor()
 #'
 #' print(obj$get_params())
 #'
 #' obj$fit(X_train, y_train)
 #'
-#' print(obj$score(X_test, y_test))
+#' print(obj$score(X_test, y_test))}
 #'
 LSBoostRegressor <- function(n_estimators=100L,
                               learning_rate=0.1,

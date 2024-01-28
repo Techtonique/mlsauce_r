@@ -25,13 +25,14 @@
 #' X_test <- as.matrix(X[test_index, ])
 #' y_test <- as.double(y[test_index])
 #'
+#' \dontrun{
 #' obj <- mlsauce::RidgeRegressor()
 #'
 #' print(obj$get_params())
 #'
 #' obj$fit(X_train, y_train)
 #'
-#' print(obj$score(X_test, y_test))
+#' print(obj$score(X_test, y_test))}
 #'
 RidgeRegressor <- function(reg_lambda=0.1)
 {
