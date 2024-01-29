@@ -12,6 +12,7 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(datasets)
 #'
 #' X <- as.matrix(datasets::mtcars[, -1])
@@ -27,7 +28,6 @@
 #' X_test <- as.matrix(X[test_index, ])
 #' y_test <- as.double(y[test_index])
 #'
-#' \dontrun{
 #' obj <- mlsauce::LassoRegressor()
 #'
 #' print(obj$get_params())

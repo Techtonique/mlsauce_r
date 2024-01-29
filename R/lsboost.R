@@ -104,6 +104,7 @@ LSBoostClassifier <- function(n_estimators=100L,
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(datasets)
 #'
 #' X <- as.matrix(datasets::mtcars[, -1])
@@ -119,7 +120,6 @@ LSBoostClassifier <- function(n_estimators=100L,
 #' X_test <- as.matrix(X[test_index, ])
 #' y_test <- as.double(y[test_index])
 #'
-#' \dontrun{
 #' obj <- mlsauce::LSBoostRegressor()
 #'
 #' print(obj$get_params())
