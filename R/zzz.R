@@ -11,6 +11,9 @@ sklearn <- NULL
   {
     try(reticulate::virtualenv_create(env), silent = TRUE)
     try(reticulate::use_virtualenv(env), silent = TRUE)
+    try(reticulate::py_install("setuptools",
+                              envname = env,
+                              pip = TRUE), silent = TRUE)
     try(reticulate::py_install(
       "Cython",
       envname = env,
