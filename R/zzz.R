@@ -49,7 +49,7 @@ sklearn <- NULL
     "mlsauce",
     envname = "./r-reticulate",
     pip = TRUE,
-    pip_options = "--upgrade",
+    pip_options = c("--upgrade", "--verbose"),
     pip_ignore_installed = TRUE
   ), silent = TRUE)
 
