@@ -59,6 +59,7 @@ AdaOpt classifier
 }
 \examples{
 
+\dontrun{
 library(datasets)
 
 X <- as.matrix(iris[, 1:4])
@@ -74,12 +75,13 @@ y_train <- as.integer(iris[train_index, 5]) - 1L
 X_test <- as.matrix(iris[test_index, 1:4])
 y_test <- as.integer(iris[test_index, 5]) - 1L
 
+
 obj <- mlsauce::AdaOpt()
 
 print(obj$get_params())
 
 obj$fit(X_train, y_train)
 
-print(obj$score(X_test, y_test))
+print(obj$score(X_test, y_test))}
 
 }

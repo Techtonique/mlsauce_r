@@ -57,6 +57,7 @@ LSBoost Regressor
 }
 \examples{
 
+\dontrun{
 library(datasets)
 
 X <- as.matrix(datasets::mtcars[, -1])
@@ -78,6 +79,6 @@ print(obj$get_params())
 
 obj$fit(X_train, y_train)
 
-print(obj$score(X_test, y_test))
+print(obj$score(X_test, y_test))}
 
 }

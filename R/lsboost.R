@@ -38,7 +38,7 @@
 #' y_train <- as.integer(y[train_index])
 #' X_test <- as.matrix(X[test_index, ])
 #' y_test <- as.integer(y[test_index])
-#' 
+#'
 #' \dontrun{
 #' obj <- mlsauce::LSBoostClassifier()
 #'

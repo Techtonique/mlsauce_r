@@ -27,7 +27,7 @@
 #' X_test <- as.matrix(iris[test_index, 1:4])
 #' y_test <- as.integer(iris[test_index, 5]) - 1L
 #'
-#' 
+#'
 #' obj <- mlsauce::StumpClassifier()
 #'
 #' print(obj$get_params())
