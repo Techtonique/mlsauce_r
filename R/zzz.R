@@ -5,9 +5,16 @@ sklearn <- NULL
 .onLoad <- function(libname, pkgname) {
   utils::install.packages("reticulate",
                           repos = list(CRAN = "https://cloud.r-project.org"))
-
-    try(reticulate::virtualenv_create(env), silent = TRUE)
-    try(reticulate::use_virtualenv(env), silent = TRUE)
+    try(reticulate::py_install(
+    "setuptools",
+    pip = TRUE,
+    pip_options = "--upgrade",
+    pip_ignore_installed = TRUE), silent = TRUE)
+    try(reticulate::py_install(
+    "wheel",
+    pip = TRUE,
+    pip_options = "--upgrade",
+    pip_ignore_installed = TRUE), silent = TRUE)
     try(reticulate::py_install(
       "Cython",
       pip = TRUE,
