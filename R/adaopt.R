@@ -17,6 +17,9 @@
 #' @param type_dist distance used for finding the nearest neighbors; currently `euclidean-f` (euclidean distances
 #' calculated as whole), `euclidean` (euclidean distances calculated row by row), `cosine` (cosine distance)
 #' @param cache if the nearest neighbors are cached or not, for faster retrieval in subsequent calls
+#' @param n_clusters_input number of clusters a priori on inpu data
+#' @param clustering_method either "kmeans" or "gmm" (Gaussian mixture)
+#' @param cluster_scaling either 'standard', 'minmax', 'robust'
 #' @param seed reproducibility seed for initial weak learner and clustering
 #'
 #' @return An object of class AdaOpt
@@ -62,6 +65,9 @@ AdaOpt <- function(n_iterations=50L,
                   row_sample=1.0,
                   type_dist="euclidean-f",
                   cache=TRUE,
+                  n_clusters_input=0,
+                  clustering_method="kmeans",
+                  cluster_scaling="standard",
                   seed=123L)
 {
 
@@ -78,5 +84,8 @@ AdaOpt <- function(n_iterations=50L,
             row_sample=row_sample,
             type_dist=type_dist,
             cache=cache,
+            n_clusters_input=n_clusters_input,
+            clustering_method=clustering_method,
+            cluster_scaling=cluster_scaling,
             seed=seed)
 }

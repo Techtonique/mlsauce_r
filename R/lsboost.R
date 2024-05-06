@@ -18,6 +18,11 @@
 #' @param seed: int, reproducibility seed for nodes_sim=='uniform', clustering and dropout.
 #' @param solver: str, type of 'weak' learner; currently in ('ridge', 'lasso')
 #' @param activation: str, activation function: currently 'relu', 'relu6', 'sigmoid', 'tanh'
+#' @param n_clusters: int, number of clusters for clustering.
+#' @param clustering_method: str, clustering method: currently 'kmeans', 'gmm' (Gaussian Mixture Model)
+#' @param cluster_scaling: str, scaling method for clustering: currently 'standard', 'minmax', 'robust'
+#' @param degree: int, degree of polynomial interactions features.
+#' @param weights_distr: str, distribution of weights for the hidden layer currently 'uniform', 'gaussian'
 #'
 #' @return An object of class LSBoostClassifier
 #' @export
@@ -60,7 +65,12 @@ LSBoostClassifier <- function(n_estimators=100L,
                               verbose=1L,
                               seed=123L,
                               solver=c("ridge", "lasso"),
-                              activation="relu")
+                              activation="relu",
+                              n_clusters=0,
+                              clustering_method="kmeans",
+                              cluster_scaling="standard",
+                              degree=0,
+                              weights_distr="uniform")
 {
 
   ms$LSBoostClassifier(n_estimators=n_estimators,
@@ -75,7 +85,12 @@ LSBoostClassifier <- function(n_estimators=100L,
                        verbose=verbose,
                        seed=seed,
                        solver=match.arg(solver),
-                       activation=activation)
+                       activation=activation,
+                       n_clusters=n_clusters,
+                       clustering_method=clustering_method,
+                       cluster_scaling=cluster_scaling,
+                       degree=degree,
+                       weights_distr=weights_distr)
 }
 
 
@@ -98,6 +113,12 @@ LSBoostClassifier <- function(n_estimators=100L,
 #' @param seed: int, reproducibility seed for nodes_sim=='uniform', clustering and dropout.
 #' @param solver: str, type of 'weak' learner; currently in ('ridge', 'lasso')
 #' @param activation: str, activation function: currently 'relu', 'relu6', 'sigmoid', 'tanh'
+#' @param n_clusters: int, number of clusters for clustering.
+#' @param clustering_method: str, clustering method: currently 'kmeans', 'gmm' (Gaussian Mixture Model)
+#' @param cluster_scaling: str, scaling method for clustering: currently 'standard', 'minmax', 'robust'
+#' @param degree: int, degree of polynomial interactions features.
+#' @param weights_distr: str, distribution of weights for the hidden layer currently 'uniform', 'gaussian'
+
 #'
 #' @return An object of class LSBoostRegressor
 #' @export
@@ -140,7 +161,12 @@ LSBoostRegressor <- function(n_estimators=100L,
                               verbose=1L,
                               seed=123L,
                               solver=c("ridge", "lasso"),
-                              activation="relu")
+                              activation="relu",
+                             n_clusters=0,
+                             clustering_method="kmeans",
+                             cluster_scaling="standard",
+                             degree=0,
+                             weights_distr="uniform")
 {
 
   ms$LSBoostRegressor(n_estimators=n_estimators,
@@ -155,6 +181,11 @@ LSBoostRegressor <- function(n_estimators=100L,
                        verbose=verbose,
                        seed=seed,
                        solver=match.arg(solver),
-                       activation=activation)
+                       activation=activation,
+                       n_clusters=n_clusters,
+                       clustering_method=clustering_method,
+                       cluster_scaling=cluster_scaling,
+                       degree=degree,
+                       weights_distr=weights_distr)
 }
 
