@@ -92,7 +92,7 @@ installedpkgs: ## list of installed packages
 	Rscript -e "utils::installed.packages()[,c(10, 16)]"
 
 initialize: setwd ## initialize: install packages devtools, usethis, pkgdown and rmarkdown
-	Rscript -e "utils::install.packages(c('devtools', 'remotes', 'roxygen2', 'usethis', 'pkgdown', 'rmarkdown'), repos='https://cloud.r-project.org')"
+	Rscript -e "utils::install.packages(c('devtools', 'remotes', 'roxygen2', 'usethis', 'pkgdown', 'rmarkdown'), dependencies=TRUE, repos='https://cloud.r-project.org')"
 
 help: ## print menu with all options
 	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
