@@ -18,6 +18,9 @@ AdaOpt(
   row_sample = 1,
   type_dist = "euclidean-f",
   cache = TRUE,
+  n_clusters_input = 0,
+  clustering_method = "kmeans",
+  cluster_scaling = "standard",
   seed = 123L
 )
 }
@@ -48,6 +51,12 @@ AdaOpt(
 calculated as whole), \code{euclidean} (euclidean distances calculated row by row), \code{cosine} (cosine distance)}
 
 \item{cache}{if the nearest neighbors are cached or not, for faster retrieval in subsequent calls}
+
+\item{n_clusters_input}{number of clusters a priori on inpu data}
+
+\item{clustering_method}{either "kmeans" or "gmm" (Gaussian mixture)}
+
+\item{cluster_scaling}{either 'standard', 'minmax', 'robust'}
 
 \item{seed}{reproducibility seed for initial weak learner and clustering}
 }
