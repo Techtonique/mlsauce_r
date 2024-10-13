@@ -26,10 +26,6 @@
   utils::install.packages("reticulate",
                           repos = list(CRAN = "https://cloud.r-project.org"))
 
-  # Use the specific virtual environment for reticulate
-
-  reticulate::use_virtualenv("r-reticulate", required = TRUE)                          
-
     reticulate::py_install(
     "setuptools",
     pip = TRUE,
@@ -62,5 +58,9 @@
   pandas <<- reticulate::import("pandas", delay_load = TRUE)
   sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
   ms <<- reticulate::import("mlsauce", delay_load = TRUE)
+
+
+  reticulate::use_virtualenv("r-reticulate", required = TRUE)                          
+
 }
 
