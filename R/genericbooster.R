@@ -67,7 +67,7 @@ GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
                               n_clusters=0,
                               clustering_method="kmeans",
                               cluster_scaling="standard",
-                              degree=0,
+                              degree=NULL,
                               weights_distr="uniform")
 {
 
@@ -160,7 +160,7 @@ GenericBoostingRegressor <- function(base_model, n_estimators=100L,
                              n_clusters=0,
                              clustering_method="kmeans",
                              cluster_scaling="standard",
-                             degree=0,
+                             degree=NULL,
                              weights_distr="uniform")
 {
 
