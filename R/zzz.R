@@ -1,19 +1,30 @@
-# global reference to scipy (will be initialized in .onLoad)
-ms <- NULL
-sklearn <- NULL
+#' Python module numpy
+  #' 
+  #' This is the Python `numpy` module imported using reticulate.
+  #' @export
+  numpy <- NULL 
 
-ensure_python_dependencies <- function() {
-  py <- reticulate::py_available()
-  if (py) {
-    reticulate::py_install(c("scikit-learn", "numpy", "scipy", "pandas"))
-  }
-}
+  #' Python module pandas
+  #' 
+  #' This is the Python `pandas` module imported using reticulate.
+  #'@export
+  pandas <- NULL 
+
+  #' Python module sklearn
+  #'
+  #'  This is the Python `sklearn` module imported using reticulate.
+  #'@export
+  sklearn <- NULL 
+
+  #' Python module mlsauce
+  #'
+  #' This is the Python `mlsauce` module imported using reticulate.
+  #'@export
+  ms <- NULL 
 
 .onLoad <- function(libname, pkgname) {
   utils::install.packages("reticulate",
                           repos = list(CRAN = "https://cloud.r-project.org"))
-  py <- reticulate::py_available()
-  if (py) {
     try(reticulate::py_install(
     "setuptools",
     pip = TRUE,
@@ -40,14 +51,11 @@ ensure_python_dependencies <- function() {
       pip = TRUE,
       pip_options = c("--upgrade", "--verbose"),
       pip_ignore_installed = TRUE
-    ), silent = TRUE)
-  }
+    ), silent = TRUE) 
 
-  # use superassignment to update global reference to package
-  #' @export
+  numpy <<- reticulate::import("numpy", delay_load = TRUE)
+  pandas <<- reticulate::import("pandas", delay_load = TRUE)
   sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
-  assign("sklearn", sklearn, envir = globalenv())
-  #' @export
   ms <<- reticulate::import("mlsauce", delay_load = TRUE)
-  assign("ms", ms, envir = globalenv())
 }
+
