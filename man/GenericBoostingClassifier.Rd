@@ -21,7 +21,7 @@ GenericBoostingClassifier(
   n_clusters = 0,
   clustering_method = "kmeans",
   cluster_scaling = "standard",
-  degree = 0,
+  degree = NULL,
   weights_distr = "uniform"
 )
 }

@@ -5,7 +5,7 @@
 \title{GenericBoosting Regressor}
 \usage{
 GenericBoostingRegressor(
-  base_model,
+  base_model = NULL,
   n_estimators = 100L,
   learning_rate = 0.1,
   n_hidden_features = 5L,
@@ -21,7 +21,7 @@ GenericBoostingRegressor(
   n_clusters = 0,
   clustering_method = "kmeans",
   cluster_scaling = "standard",
-  degree = 0,
+  degree = NULL,
   weights_distr = "uniform"
 )
 }

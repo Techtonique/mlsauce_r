@@ -1,26 +1,26 @@
 #' Python module numpy
-  #' 
-  #' This is the Python `numpy` module imported using reticulate.
-  #' @export
-  numpy <- NULL 
+#' 
+#' This is the Python `numpy` module imported using reticulate.
+#' @export
+numpy <- NULL 
 
-  #' Python module pandas
-  #' 
-  #' This is the Python `pandas` module imported using reticulate.
-  #'@export
-  pandas <- NULL 
+#' Python module pandas
+#' 
+#' This is the Python `pandas` module imported using reticulate.
+#'@export
+pandas <- NULL 
 
-  #' Python module sklearn
-  #'
-  #'  This is the Python `sklearn` module imported using reticulate.
-  #'@export
-  sklearn <- NULL 
+#' Python module sklearn
+#'
+#'  This is the Python `sklearn` module imported using reticulate.
+#'@export
+sklearn <- NULL 
 
-  #' Python module mlsauce
-  #'
-  #' This is the Python `mlsauce` module imported using reticulate.
-  #'@export
-  ms <- NULL 
+#' Python module mlsauce
+#'
+#' This is the Python `mlsauce` module imported using reticulate.
+#'@export
+ms <- NULL 
 
 .onLoad <- function(libname, pkgname) {
   utils::install.packages("reticulate",
