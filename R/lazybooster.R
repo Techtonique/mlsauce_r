@@ -44,6 +44,7 @@
 #' 
 #' obj$fit(X_train, X_test, y_train, y_test)
 #' 
+#' @export
 LazyBoostingClassifier <- function(verbose=0,
         ignore_warnings=TRUE,
         custom_metric=NULL,
@@ -111,6 +112,7 @@ LazyBoostingClassifier <- function(verbose=0,
 #' 
 #' obj$fit(X_train, X_test, y_train, y_test)
 #' 
+#' @export 
 LazyBoostingRegressor <- function(verbose=0,
         ignore_warnings=TRUE,
         custom_metric=NULL,
