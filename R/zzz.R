@@ -25,33 +25,38 @@
 .onLoad <- function(libname, pkgname) {
   utils::install.packages("reticulate",
                           repos = list(CRAN = "https://cloud.r-project.org"))
-    try(reticulate::py_install(
+
+  # Use the specific virtual environment for reticulate
+
+  reticulate::use_virtualenv("r-reticulate", required = TRUE)                          
+
+    reticulate::py_install(
     "setuptools",
     pip = TRUE,
     pip_options = "--upgrade",
-    pip_ignore_installed = TRUE), silent = TRUE)
-    try(reticulate::py_install(
+    pip_ignore_installed = TRUE)
+    reticulate::py_install(
     "wheel",
     pip = TRUE,
     pip_options = "--upgrade",
-    pip_ignore_installed = TRUE), silent = TRUE)
-    try(reticulate::py_install(
+    pip_ignore_installed = TRUE)
+    reticulate::py_install(
       "Cython",
       pip = TRUE,
       pip_options = "--upgrade",
-      pip_ignore_installed = TRUE), silent = TRUE)
-    try(reticulate::py_install(
+      pip_ignore_installed = TRUE)
+    reticulate::py_install(
       "scikit-learn",
       pip = TRUE,
       pip_options = "--upgrade",
       pip_ignore_installed = TRUE
-    ), silent = TRUE)
-    try(reticulate::py_install(
+    )
+    reticulate::py_install(
       "git+https://github.com/Techtonique/mlsauce.git",
       pip = TRUE,
       pip_options = c("--upgrade", "--verbose"),
       pip_ignore_installed = TRUE
-    ), silent = TRUE) 
+    ) 
 
   numpy <<- reticulate::import("numpy", delay_load = TRUE)
   pandas <<- reticulate::import("pandas", delay_load = TRUE)
