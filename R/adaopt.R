@@ -71,7 +71,7 @@ AdaOpt <- function(n_iterations=50L,
                   seed=123L)
 {
 
-  ms$AdaOpt(n_iterations=n_iterations,
+  mlsauce::ms$AdaOpt(n_iterations=n_iterations,
             learning_rate=learning_rate,
             reg_lambda=reg_lambda,
             reg_alpha=reg_alpha,

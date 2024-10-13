@@ -73,7 +73,7 @@ LSBoostClassifier <- function(n_estimators=100L,
                               weights_distr="uniform")
 {
 
-  ms$LSBoostClassifier(n_estimators=n_estimators,
+  mlsauce::ms$LSBoostClassifier(n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        reg_lambda=reg_lambda,
@@ -169,7 +169,7 @@ LSBoostRegressor <- function(n_estimators=100L,
                              weights_distr="uniform")
 {
 
-  ms$LSBoostRegressor(n_estimators=n_estimators,
+  mlsauce::ms$LSBoostRegressor(n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        reg_lambda=reg_lambda,

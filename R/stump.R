@@ -38,7 +38,7 @@
 #'
 StumpClassifier <- function(bins="auto")
 {
-  ms$StumpClassifier(bins=bins)
+  mlsauce::ms$StumpClassifier(bins=bins)
 }
 
 

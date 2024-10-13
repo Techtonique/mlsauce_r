@@ -38,5 +38,5 @@
 RidgeRegressor <- function(reg_lambda=0.1)
 {
 
-  ms$RidgeRegressor(reg_lambda=reg_lambda)
+  mlsauce::ms$RidgeRegressor(reg_lambda=reg_lambda)
 }

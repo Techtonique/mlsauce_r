@@ -12,5 +12,5 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.0
 Config/reticulate:
-  required-modules: ["scikit-learn", "numpy", "scipy", "pandas"]
+    required-modules: ["scikit-learn", "numpy", "scipy", "pandas"]
 

@@ -39,5 +39,5 @@
 LassoRegressor <- function(reg_lambda=0.1, max_iter=10L, tol=1e-3)
 {
 
-  ms$LassoRegressor(reg_lambda=reg_lambda, max_iter=max_iter, tol=tol)
+  mlsauce::ms$LassoRegressor(reg_lambda=reg_lambda, max_iter=max_iter, tol=tol)
 }

@@ -71,7 +71,7 @@ GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
                               weights_distr="uniform")
 {
 
-  ms$GenericBoostingClassifier(base_model, n_estimators=n_estimators,
+  mlsauce::ms$GenericBoostingClassifier(base_model, n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        reg_lambda=reg_lambda,
@@ -165,7 +165,7 @@ GenericBoostingRegressor <- function(base_model=NULL, n_estimators=100L,
 {
 
 if (is.null(base_model)) {
-  ms$GenericBoostingRegressor(n_estimators=n_estimators,
+  mlsauce::ms$GenericBoostingRegressor(n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        reg_lambda=reg_lambda,
@@ -183,7 +183,7 @@ if (is.null(base_model)) {
                        degree=degree,
                        weights_distr=weights_distr)
 } else {
-    ms$GenericBoostingRegressor(base_model=base_model, 
+    mlsauce::ms$GenericBoostingRegressor(base_model=base_model, 
     n_estimators=n_estimators,
                          learning_rate=learning_rate,
                          n_hidden_features=n_hidden_features,
