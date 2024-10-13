@@ -53,3 +53,5 @@ rsconnect/
 .Rbuildignore
 .Rprofile
 r-reticulate/
+venv/
+.DS_Store

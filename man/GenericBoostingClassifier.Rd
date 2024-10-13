@@ -5,7 +5,7 @@
 \title{GenericBoosting classifier}
 \usage{
 GenericBoostingClassifier(
-  base_model,
+  base_model = NULL,
   n_estimators = 100L,
   learning_rate = 0.1,
   n_hidden_features = 5L,
@@ -26,6 +26,8 @@ GenericBoostingClassifier(
 )
 }
 \arguments{
+\item{base_model:}{object, base model to be boosted.}
+
 \item{n_estimators:}{int, number of boosting iterations.}
 
 \item{learning_rate:}{float, controls the learning speed at training time.}
@@ -85,14 +87,12 @@ y_train <- as.integer(y[train_index])
 X_test <- as.matrix(X[test_index, ])
 y_test <- as.integer(y[test_index])
 
-\dontrun{
-regr <- sklearn$linear_model$Ridge()
-obj <- mlsauce::GenericBoostingClassifier(regr)
+obj <- mlsauce::GenericBoostingClassifier()
 
 print(obj$get_params())
 
 obj$fit(X_train, y_train)
 
-print(obj$score(X_test, y_test))}
+print(obj$score(X_test, y_test))
 
 }

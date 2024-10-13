@@ -4,6 +4,7 @@
 
 #' GenericBoosting classifier
 #'
+#' @param base_model: object, base model to be boosted.
 #' @param n_estimators: int, number of boosting iterations.
 #' @param learning_rate: float, controls the learning speed at training time.
 #' @param n_hidden_features: int
@@ -43,17 +44,15 @@
 #' X_test <- as.matrix(X[test_index, ])
 #' y_test <- as.integer(y[test_index])
 #'
-#' \dontrun{
-#' regr <- sklearn$linear_model$Ridge()
-#' obj <- mlsauce::GenericBoostingClassifier(regr)
+#' obj <- mlsauce::GenericBoostingClassifier()
 #'
 #' print(obj$get_params())
 #'
 #' obj$fit(X_train, y_train)
 #'
-#' print(obj$score(X_test, y_test))}
+#' print(obj$score(X_test, y_test))
 #'
-GenericBoostingClassifier <- function(base_model, n_estimators=100L,
+GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
                               learning_rate=0.1,
                               n_hidden_features=5L,
                               reg_lambda=0.1,
@@ -98,6 +97,7 @@ GenericBoostingClassifier <- function(base_model, n_estimators=100L,
 
 #' GenericBoosting Regressor
 #'
+#' @param base_model: object, base model to be boosted.
 #' @param n_estimators: int, number of boosting iterations.
 #' @param learning_rate: float, controls the learning speed at training time.
 #' @param n_hidden_features: int
@@ -123,7 +123,6 @@ GenericBoostingClassifier <- function(base_model, n_estimators=100L,
 #'
 #' @examples
 #'
-#' \dontrun{
 #' library(datasets)
 #'
 #' X <- as.matrix(datasets::mtcars[, -1])
@@ -139,14 +138,13 @@ GenericBoostingClassifier <- function(base_model, n_estimators=100L,
 #' X_test <- as.matrix(X[test_index, ])
 #' y_test <- as.double(y[test_index])
 #'
-#' regr <- sklearn$linear_model$Ridge()
-#' obj <- mlsauce::GenericBoostingRegressor(regr)
+#' obj <- mlsauce::GenericBoostingRegressor()
 #'
 #' print(obj$get_params())
 #'
 #' obj$fit(X_train, y_train)
 #'
-#' print(obj$score(X_test, y_test))}
+#' print(obj$score(X_test, y_test))
 #'
 GenericBoostingRegressor <- function(base_model, n_estimators=100L,
                               learning_rate=0.1,
@@ -167,7 +165,8 @@ GenericBoostingRegressor <- function(base_model, n_estimators=100L,
                              weights_distr="uniform")
 {
 
-  ms$GenericBoostingRegressor(base_model, n_estimators=n_estimators,
+if (is.null(base_model)) {
+  ms$GenericBoostingRegressor(n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        reg_lambda=reg_lambda,
@@ -185,5 +184,26 @@ GenericBoostingRegressor <- function(base_model, n_estimators=100L,
                        cluster_scaling=cluster_scaling,
                        degree=degree,
                        weights_distr=weights_distr)
+} else {
+    ms$GenericBoostingRegressor(base_model=base_model, 
+    n_estimators=n_estimators,
+                         learning_rate=learning_rate,
+                         n_hidden_features=n_hidden_features,
+                         reg_lambda=reg_lambda,
+                         row_sample=row_sample,
+                         col_sample=col_sample,
+                         dropout=dropout,
+                         tolerance=tolerance,
+                         direct_link=direct_link,
+                         verbose=verbose,
+                         seed=seed,
+                         solver=match.arg(solver),
+                         activation=activation,
+                         n_clusters=n_clusters,
+                         clustering_method=clustering_method,
+                         cluster_scaling=cluster_scaling,
+                         degree=degree,
+                         weights_distr=weights_distr)
 }
 
+}
