@@ -145,7 +145,7 @@ GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
 #'
 #' print(obj$score(X_test, y_test))
 #'
-GenericBoostingRegressor <- function(base_model, n_estimators=100L,
+GenericBoostingRegressor <- function(base_model=NULL, n_estimators=100L,
                               learning_rate=0.1,
                               n_hidden_features=5L,
                               reg_lambda=0.1,
