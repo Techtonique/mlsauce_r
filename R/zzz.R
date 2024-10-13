@@ -44,6 +44,8 @@ ensure_python_dependencies <- function() {
   }
 
   # use superassignment to update global reference to package
+  #' @export
   sklearn <- reticulate::import("sklearn", delay_load = TRUE)
+  #' @export
   ms <- reticulate::import("mlsauce", delay_load = TRUE)
 }
