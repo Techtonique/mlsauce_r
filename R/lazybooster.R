@@ -19,6 +19,8 @@
 #' 
 #' @examples
 #' 
+#' # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
+#' 
 #' library(mlsauce)
 #' library(datasets)
 #' 
@@ -86,6 +88,8 @@ LazyBoostingClassifier <- function(verbose=0,
 #' LazyBoostingRegressor object
 #' 
 #' @examples
+#' 
+#' # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
 #' 
 #' library(mlsauce)
 #' library(datasets)

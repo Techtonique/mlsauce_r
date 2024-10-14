@@ -28,6 +28,8 @@
 #' @export
 #'
 #' @examples
+#' 
+#' # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
 #'
 #' library(datasets)
 #'
@@ -121,6 +123,8 @@ GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
 #' @export
 #'
 #' @examples
+#' 
+#' # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
 #'
 #' library(datasets)
 #'
