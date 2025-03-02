@@ -1,30 +1,37 @@
 #' Python module numpy
-#' 
+#'
 #' This is the Python `numpy` module imported using reticulate.
 #' @export
-numpy <- NULL 
+numpy <- NULL
 
 #' Python module pandas
-#' 
+#'
 #' This is the Python `pandas` module imported using reticulate.
 #'@export
-pandas <- NULL 
+pandas <- NULL
 
 #' Python module sklearn
 #'
 #'  This is the Python `sklearn` module imported using reticulate.
 #'@export
-sklearn <- NULL 
+sklearn <- NULL
 
 #' Python module mlsauce
 #'
 #' This is the Python `mlsauce` module imported using reticulate.
 #'@export
-ms <- NULL 
+ms <- NULL
 
 .onLoad <- function(libname, pkgname) {
+
   utils::install.packages("reticulate",
                           repos = list(CRAN = "https://cloud.r-project.org"))
+
+    reticulate::py_require("setuptools")
+    reticulate::py_require("wheel")
+    reticulate::py_require("Cython")
+    reticulate::py_require("scikit-learn")
+    reticulate::py_require("git+https://github.com/Techtonique/mlsauce.git")
 
     reticulate::py_install(
     "setuptools",
@@ -52,7 +59,7 @@ ms <- NULL
       pip = TRUE,
       pip_options = c("--upgrade", "--verbose"),
       pip_ignore_installed = TRUE
-    ) 
+    )
 
   numpy <<- reticulate::import("numpy", delay_load = TRUE)
   pandas <<- reticulate::import("pandas", delay_load = TRUE)
@@ -60,7 +67,7 @@ ms <- NULL
   ms <<- reticulate::import("mlsauce", delay_load = TRUE)
 
 
-  reticulate::use_virtualenv("r-reticulate", required = TRUE)                          
+  reticulate::use_virtualenv("r-reticulate", required = TRUE)
 
 }
 
