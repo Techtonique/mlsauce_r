@@ -2,7 +2,7 @@
 
 **Miscellaneous Statistical/Machine learning stuff.**
 
-[![r-universe](https://techtonique.r-universe.dev/badges/mlsauce)](https://techtonique.r-universe.dev/mlsauce) [![Documentation](https://img.shields.io/badge/documentation-is_here-green)](https://techtonique.github.io/mlsauce_r/)
+[![r-universe](https://r-packages.techtonique.net/badges/mlsauce)](https://r-packages.techtonique.net/mlsauce) [![Documentation](https://img.shields.io/badge/documentation-is_here-green)](https://techtonique.github.io/mlsauce_r/)
 
 R version of the Python package [mlsauce](https://github.com/Techtonique/mlsauce).
 
@@ -17,7 +17,7 @@ remotes::install_github("Techtonique/mlsauce_r") # the repo is in this organizat
 **Install from R-universe**
 
 ```bash
-install.packages('mlsauce', repos = c('https://techtonique.r-universe.dev',
+install.packages('mlsauce', repos = c('https://r-packages.techtonique.net',
 'https://cloud.r-project.org'))
 ```
 
