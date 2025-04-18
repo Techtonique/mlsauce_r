@@ -77,7 +77,7 @@ pandas <- NULL
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)        
-      system("pip install mlsauce")
+      system("pip install git+https://github.com/Techtonique/mlsauce.git")
       ms <<- reticulate::import("mlsauce", delay_load = TRUE)
     })
   })    
