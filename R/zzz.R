@@ -68,11 +68,13 @@ pandas <- NULL
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)    
-    }, error = function(e) {        
-      ms <<- reticulate::import("mlsauce", delay_load = TRUE)
+    }, error = function(e) {              
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)        
+      reticulate::py_install("git+https://github.com/Techtonique/mlsauce.git", envname = ".")
+      reticulate::use_virtualenv(".", required = TRUE)
+      ms <<- reticulate::import("mlsauce", delay_load = TRUE)
     })
   })    
  }, error = function(e) { # If using 'Global' virtual environment fails, use  the default local 'r-reticulate'
@@ -87,11 +89,13 @@ pandas <- NULL
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)    
-    }, error = function(e) { # If using 'r-reticulate' fails, use the default local 'Global' virtual environment, e.g in Colab     
-      ms <<- reticulate::import("mlsauce", delay_load = TRUE)
+    }, error = function(e) { # If using 'r-reticulate' fails, use the default local 'Global' virtual environment, e.g in Colab      
       sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
       numpy <<- reticulate::import("numpy", delay_load = TRUE)
       pandas <<- reticulate::import("pandas", delay_load = TRUE)        
+      reticulate::py_install("git+https://github.com/Techtonique/mlsauce.git", envname = ".")  
+      reticulate::use_virtualenv(".", required = TRUE)   
+      ms <<- reticulate::import("mlsauce", delay_load = TRUE)
     })
   })  
 }
