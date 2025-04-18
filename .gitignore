@@ -56,3 +56,5 @@ r-reticulate/
 reticulate/
 venv/
 .DS_Store
+
+*.html

@@ -1,73 +1,97 @@
-#' Python module numpy
-#'
-#' This is the Python `numpy` module imported using reticulate.
 #' @export
-numpy <- NULL
+VENV_PATH <- NULL 
 
-#' Python module pandas
-#'
-#' This is the Python `pandas` module imported using reticulate.
-#'@export
+#' @export
+ms <- NULL  
+#' @export
+sklearn <- NULL  
+#' @export 
+numpy <- NULL
+#' @export
 pandas <- NULL
 
-#' Python module sklearn
-#'
-#'  This is the Python `sklearn` module imported using reticulate.
-#'@export
-sklearn <- NULL
-
-#' Python module mlsauce
-#'
-#' This is the Python `mlsauce` module imported using reticulate.
-#'@export
-ms <- NULL
-
+#' @import reticulate
 .onLoad <- function(libname, pkgname) {
-
-  utils::install.packages("reticulate",
-                          repos = list(CRAN = "https://cloud.r-project.org"))
-
-    reticulate::py_require("setuptools")
-    reticulate::py_require("wheel")
-    reticulate::py_require("Cython")
-    reticulate::py_require("scikit-learn")
-    reticulate::py_require("git+https://github.com/Techtonique/mlsauce.git")
-
-    reticulate::py_install(
-    "setuptools",
-    pip = TRUE,
-    pip_options = "--upgrade",
-    pip_ignore_installed = TRUE)
-    reticulate::py_install(
-    "wheel",
-    pip = TRUE,
-    pip_options = "--upgrade",
-    pip_ignore_installed = TRUE)
-    reticulate::py_install(
-      "Cython",
-      pip = TRUE,
-      pip_options = "--upgrade",
-      pip_ignore_installed = TRUE)
-    reticulate::py_install(
-      "scikit-learn",
-      pip = TRUE,
-      pip_options = "--upgrade",
-      pip_ignore_installed = TRUE
-    )
-    reticulate::py_install(
-      "git+https://github.com/Techtonique/mlsauce.git",
-      pip = TRUE,
-      pip_options = c("--upgrade", "--verbose"),
-      pip_ignore_installed = TRUE
-    )
-
-  numpy <<- reticulate::import("numpy", delay_load = TRUE)
-  pandas <<- reticulate::import("pandas", delay_load = TRUE)
-  sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
-  ms <<- reticulate::import("mlsauce", delay_load = TRUE)
-
-
-  reticulate::use_virtualenv("r-reticulate", required = TRUE)
-
+  tryCatch({
+  # Specify the name of the virtual environment
+  env_name <- "mlsauce_env"
+  
+  # Path to the virtual environment (persistent location)
+  VENV_PATH <<- file.path(Sys.getenv("HOME"), ".mlsauce", env_name)
+  
+  # Create the parent directory if it doesn't exist
+  if (!dir.exists(dirname(VENV_PATH))) {
+    dir.create(dirname(VENV_PATH), recursive = TRUE, showWarnings = FALSE)
+  }
+  
+  # Check if the virtual environment exists
+  if (!dir.exists(VENV_PATH)) {
+    message("Creating Python virtual environment...")
+    
+    # Create the virtual environment
+    tryCatch({
+      reticulate::virtualenv_create(VENV_PATH, python = "python3")
+    }, error = function(e) {
+      stop("Failed to create virtual environment: ", e$message)
+    })
+    
+    # Install required Python packages
+    message("Installing Python packages...")
+    tryCatch({
+      reticulate::virtualenv_install(
+        VENV_PATH,
+        packages = c("git+https://github.com/Techtonique/mlsauce.git", 
+        "scikit-learn", "numpy", "pandas"),
+        ignore_installed = TRUE
+      )
+    }, error = function(e) {
+      stop("Failed to install Python packages: ", e$message)
+    })
+  }
+  # Use the 'Global', persistent virtual environment
+  tryCatch({
+    reticulate::use_virtualenv(VENV_PATH, required = TRUE)
+    ms <<- reticulate::import("mlsauce", delay_load = TRUE)
+    sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
+    numpy <<- reticulate::import("numpy", delay_load = TRUE)
+    pandas <<- reticulate::import("pandas", delay_load = TRUE)    
+  }, error = function(e) {
+    message("Failed to use virtual environment: ", e$message)
+    # Import sklearn lazily
+    tryCatch({
+      reticulate::py_install("git+https://github.com/Techtonique/mlsauce.git")
+      reticulate::py_install("scikit-learn")
+      reticulate::py_install("numpy")
+      reticulate::py_install("pandas")
+      reticulate::use_virtualenv("r-reticulate", required = TRUE)
+      ms <<- reticulate::import("mlsauce", delay_load = TRUE)
+      sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
+      numpy <<- reticulate::import("numpy", delay_load = TRUE)
+      pandas <<- reticulate::import("pandas", delay_load = TRUE)    
+    }, error = function(e) {        
+      ms <<- reticulate::import("mlsauce", delay_load = TRUE)
+      sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
+      numpy <<- reticulate::import("numpy", delay_load = TRUE)
+      pandas <<- reticulate::import("pandas", delay_load = TRUE)        
+    })
+  })    
+ }, error = function(e) { # If using 'Global' virtual environment fails, use  the default local 'r-reticulate'
+    tryCatch({
+      message("Installing sklearn from r-reticulate...")
+      reticulate::py_install("git+https://github.com/Techtonique/mlsauce.git")
+      reticulate::py_install("scikit-learn")
+      reticulate::py_install("numpy")
+      reticulate::py_install("pandas")
+      reticulate::use_virtualenv("r-reticulate", required = TRUE)
+      ms <<- reticulate::import("mlsauce", delay_load = TRUE)
+      sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
+      numpy <<- reticulate::import("numpy", delay_load = TRUE)
+      pandas <<- reticulate::import("pandas", delay_load = TRUE)    
+    }, error = function(e) { # If using 'r-reticulate' fails, use the default local 'Global' virtual environment, e.g in Colab     
+      ms <<- reticulate::import("mlsauce", delay_load = TRUE)
+      sklearn <<- reticulate::import("sklearn", delay_load = TRUE)
+      numpy <<- reticulate::import("numpy", delay_load = TRUE)
+      pandas <<- reticulate::import("pandas", delay_load = TRUE)        
+    })
+  })  
 }
-
