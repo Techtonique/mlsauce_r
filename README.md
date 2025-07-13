@@ -2,11 +2,9 @@
 
 **Miscellaneous Statistical/Machine learning stuff.**
 
-[![r-universe](https://r-packages.techtonique.net/badges/mlsauce)](https://r-packages.techtonique.net/mlsauce) [![Documentation](https://img.shields.io/badge/documentation-is_here-green)](https://techtonique.github.io/mlsauce_r/)
+[![Documentation](https://img.shields.io/badge/documentation-is_here-green)](https://techtonique.github.io/mlsauce_r/)
 
 R version of the Python package [mlsauce](https://github.com/Techtonique/mlsauce).
-
-Only for Linux, for now. Windows users can envisage using [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10), the **Windows Subsystem for Linux**.
 
 **Install from GitHub**
 

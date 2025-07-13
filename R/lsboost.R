@@ -40,9 +40,9 @@
 #' train_index <- sample(x = 1:n, size = floor(0.8*n), replace = TRUE)
 #' test_index <- -train_index
 #' X_train <- as.matrix(X[train_index, ])
-#' y_train <- as.integer(y[train_index])
+#' y_train <- floor(y[train_index])
 #' X_test <- as.matrix(X[test_index, ])
-#' y_test <- as.integer(y[test_index])
+#' y_test <- floor(y[test_index])
 #'
 #' \dontrun{
 #' obj <- mlsauce::LSBoostClassifier()
