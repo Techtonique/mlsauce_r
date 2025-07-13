@@ -1,53 +1,70 @@
-name: R Package CI
-
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+#
+# NOTE: This workflow is overkill for most R packages and
+# check-standard.yaml is likely a better choice.
+# usethis::use_github_action("check-standard") will install it.
 on:
   push:
-    branches:
-      - main  # or specify any branch you want to monitor
+    branches: [main, master]
   pull_request:
-    branches:
-      - main  # or specify the branch for PRs
+    branches: [main, master]
+
+name: R-CMD-check
 
 jobs:
-  check_install:
-    runs-on: ${{ matrix.os }}
+  R-CMD-check:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
+      fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]  # Defining the matrix of operating systems
+        config:
+          - {os: macOS-latest,   r: 'release'}
+
+          - {os: windows-latest, r: 'release'}
+          # Use 3.6 to trigger usage of RTools35
+          - {os: windows-latest, r: '3.6'}
+
+          # Use older ubuntu to maximise backward compatibility
+          - {os: ubuntu-18.04,   r: 'devel', http-user-agent: 'release'}
+          - {os: ubuntu-18.04,   r: 'release'}
+          - {os: ubuntu-18.04,   r: 'oldrel-1'}
+          - {os: ubuntu-18.04,   r: 'oldrel-2'}
+          - {os: ubuntu-18.04,   r: 'oldrel-3'}
+          - {os: ubuntu-18.04,   r: 'oldrel-4'}
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
 
     steps:
-    # Checkout the repository
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    # Set up Rocker R image
-    - name: Set up Rocker R
-      uses: rocker/r-ver@v4 # You can specify the R version here, e.g., v4.1.0
+      - uses: r-lib/actions/setup-pandoc@v1
 
-    # Install pak to handle dependencies
-    - name: Install pak (if not already installed)
-      run: |
-        if (!requireNamespace("pak", quietly = TRUE)) {
-          install.packages("pak")
-        }
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: ${{ matrix.config.r }}
+          http-user-agent: ${{ matrix.config.http-user-agent }}
+          use-public-rspm: true
 
-    # Install dependencies using pak
-    - name: Install dependencies using pak
-      run: |
-        R -e "pak::pkg_install()"
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: rcmdcheck
 
-    # Run R CMD check
-    - name: Run R CMD check
-      run: |
-        if ($RUNNER_OS -eq 'Windows') {
-          # Workaround for PowerShell on Windows
-          Rterm.exe CMD check .
-        } else {
-          R CMD check .
-        }
+      - uses: r-lib/actions/check-r-package@v1
 
-    # Run R CMD INSTALL
-    - name: Run R CMD INSTALL
-      run: |
-        R CMD INSTALL .
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
+
+      - name: Upload check results
+        if: failure()
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+          path: check
