@@ -25,16 +25,10 @@ jobs:
     - name: Set up R
       uses: r-lib/actions/setup-r@v2
 
-    # Install dependencies
+    # Install dependencies based on the OS
     - name: Install dependencies
       run: |
-        if (Sys.info()['sysname'] == 'Windows') {
-          install.packages('devtools')
-          devtools::install_deps()
-        } else {
-          install.packages('devtools')
-          devtools::install_deps()
-        }
+        Rscript -e "if (Sys.info()['sysname'] == 'Windows') { install.packages('devtools'); devtools::install_deps() } else { install.packages('devtools'); devtools::install_deps() }"
 
     # Run R CMD check
     - name: Run R CMD check
