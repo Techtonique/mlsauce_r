@@ -7,11 +7,11 @@ Maintainer: T. Moudiki <thierry.moudiki@gmail.com>
 Description: Miscellaneous Statistical/Machine Learning stuff.
 License: BSD_3_clause Clear + file LICENSE
 Imports: memoise, reticulate
-Suggests: Rcpp 
+Suggests: Rcpp, misc 
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.0
 Config/reticulate:
     required-modules: scikit-learn, numpy, scipy, pandas
-
+Remotes: thierrymoudiki/misc
