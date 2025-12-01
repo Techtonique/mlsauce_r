@@ -3,6 +3,9 @@
 **Miscellaneous Statistical/Machine learning stuff.**
 
 [![Documentation](https://img.shields.io/badge/documentation-is_here-green)](https://techtonique.github.io/mlsauce_r/)
+![Downloads](https://r-packages.techtonique.net/badges/downloads/last-month/mlsauce.svg)
+![Total Downloads](https://r-packages.techtonique.net/badges/downloads/grand-total/mlsauce.svg?color=brightgreen)
+
 
 R version of the Python package [mlsauce](https://github.com/Techtonique/mlsauce).
 
