@@ -1,12 +1,12 @@
 Package: mlsauce
 Title: Miscellaneous Statistical/Machine Learning stuff
-Version: 0.37.0
+Version: 0.37.1
 Date: 2025-12-23
 Author: T. Moudiki
 Maintainer: T. Moudiki <thierry.moudiki@gmail.com>
 Description: Miscellaneous Statistical/Machine Learning stuff.
 License: BSD_3_clause Clear + file LICENSE
-Imports: memoise, reticulate
+Imports: reticulate
 Suggests: Rcpp, misc 
 Encoding: UTF-8
 LazyData: true
