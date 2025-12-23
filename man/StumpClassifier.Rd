@@ -4,7 +4,7 @@
 \alias{StumpClassifier}
 \title{Stump classifier}
 \usage{
-StumpClassifier(bins = "auto")
+StumpClassifier(bins = "auto", venv_path = "./venv", ...)
 }
 \arguments{
 \item{bins:}{int, number of histogram bins.}

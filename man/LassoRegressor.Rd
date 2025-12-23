@@ -4,7 +4,13 @@
 \alias{LassoRegressor}
 \title{Lasso regressor}
 \usage{
-LassoRegressor(reg_lambda = 0.1, max_iter = 10L, tol = 0.001)
+LassoRegressor(
+  reg_lambda = 0.1,
+  max_iter = 10L,
+  tol = 0.001,
+  venv_path = "./venv",
+  ...
+)
 }
 \arguments{
 \item{reg_lambda}{L1 regularization parameter}

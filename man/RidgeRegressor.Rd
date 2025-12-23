@@ -4,7 +4,7 @@
 \alias{RidgeRegressor}
 \title{Ridge regressor}
 \usage{
-RidgeRegressor(reg_lambda = 0.1)
+RidgeRegressor(reg_lambda = 0.1, venv_path = "./venv", ...)
 }
 \arguments{
 \item{reg_lambda}{L2 regularization parameter}

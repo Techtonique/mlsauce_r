@@ -70,10 +70,14 @@ LSBoostClassifier <- function(n_estimators=100L,
                               clustering_method="kmeans",
                               cluster_scaling="standard",
                               degree=0,
-                              weights_distr="uniform")
-{
+                              weights_distr="uniform",
+                              venv_path = "./venv",
+                              ...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
 
-  mlsauce::ms$LSBoostClassifier(n_estimators=n_estimators,
+  ms$LSBoostClassifier(n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        reg_lambda=reg_lambda,
@@ -166,10 +170,14 @@ LSBoostRegressor <- function(n_estimators=100L,
                              clustering_method="kmeans",
                              cluster_scaling="standard",
                              degree=0,
-                             weights_distr="uniform")
-{
-
-  mlsauce::ms$LSBoostRegressor(n_estimators=n_estimators,
+                             weights_distr="uniform", 
+                             venv_path = "./venv",
+                             ...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
+  
+  ms$LSBoostRegressor(n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        reg_lambda=reg_lambda,

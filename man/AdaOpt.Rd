@@ -21,7 +21,9 @@ AdaOpt(
   n_clusters_input = 0,
   clustering_method = "kmeans",
   cluster_scaling = "standard",
-  seed = 123L
+  seed = 123L,
+  venv_path = "./venv",
+  ...
 )
 }
 \arguments{

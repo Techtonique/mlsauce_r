@@ -55,9 +55,14 @@ LazyBoostingClassifier <- function(verbose=0,
         random_state=42L,
         estimators="all",
         preprocess=FALSE,
-        n_jobs=NULL)
-{
-    mlsauce::ms$LazyBoostingClassifier(verbose=verbose,
+        n_jobs=NULL,
+        venv_path = "./venv",
+        ...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
+  
+    ms$LazyBoostingClassifier(verbose=verbose,
         ignore_warnings=ignore_warnings,
         custom_metric=custom_metric,
         predictions=predictions,
@@ -125,9 +130,14 @@ LazyBoostingRegressor <- function(verbose=0,
         random_state=42L,
         estimators="all",
         preprocess=FALSE,
-        n_jobs=NULL)
-{
-    mlsauce::ms$LazyBoostingRegressor(verbose=verbose,
+        n_jobs=NULL,
+        venv_path = "./venv",
+...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
+  
+    ms$LazyBoostingRegressor(verbose=verbose,
         ignore_warnings=ignore_warnings,
         custom_metric=custom_metric,
         predictions=predictions,

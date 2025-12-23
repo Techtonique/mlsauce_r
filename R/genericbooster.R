@@ -9,7 +9,6 @@
 #' @param learning_rate: float, controls the learning speed at training time.
 #' @param n_hidden_features: int
 #' @param number of nodes in successive hidden layers.
-#' @param reg_lambda: float, L2 regularization parameter for successive errors in the optimizer (at training time).
 #' @param row_sample: float, percentage of rows chosen from the training set.
 #' @param col_sample: float, percentage of columns chosen from the training set.
 #' @param dropout: float, percentage of nodes dropped from the training set.
@@ -57,7 +56,6 @@
 GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
                               learning_rate=0.1,
                               n_hidden_features=5L,
-                              reg_lambda=0.1,
                               row_sample=1,
                               col_sample=1,
                               dropout=0,
@@ -70,13 +68,18 @@ GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
                               clustering_method="kmeans",
                               cluster_scaling="standard",
                               degree=NULL,
-                              weights_distr="uniform")
-{
+                              weights_distr="uniform", 
+                              venv_path = "./venv",
+                              ...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
+  
   if (is.null(degree))
   {
     degree <- reticulate::py_none()
   }
-  mlsauce::ms$GenericBoostingClassifier(base_model, n_estimators=n_estimators,
+  ms$GenericBoostingClassifier(base_model, n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        row_sample=row_sample,
@@ -165,15 +168,20 @@ GenericBoostingRegressor <- function(base_model=NULL, n_estimators=100L,
                              clustering_method="kmeans",
                              cluster_scaling="standard",
                              degree=NULL,
-                             weights_distr="uniform")
-{
+                             weights_distr="uniform",
+                             venv_path = "./venv",
+                             ...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
+  
   if (is.null(degree))
   {
     degree <- reticulate::py_none()
   }
 
 if (is.null(base_model)) {
-  mlsauce::ms$GenericBoostingRegressor(n_estimators=n_estimators,
+  ms$GenericBoostingRegressor(n_estimators=n_estimators,
                        learning_rate=learning_rate,
                        n_hidden_features=n_hidden_features,
                        row_sample=row_sample,
@@ -190,11 +198,10 @@ if (is.null(base_model)) {
                        degree=degree,
                        weights_distr=weights_distr)
 } else {
-    mlsauce::ms$GenericBoostingRegressor(base_model=base_model, 
+    ms$GenericBoostingRegressor(base_model=base_model, 
     n_estimators=n_estimators,
                          learning_rate=learning_rate,
                          n_hidden_features=n_hidden_features,
-                         reg_lambda=reg_lambda,
                          row_sample=row_sample,
                          col_sample=col_sample,
                          dropout=dropout,

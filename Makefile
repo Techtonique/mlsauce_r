@@ -45,8 +45,6 @@ check: clean setwd ## check package
 clean: ## remove all build, and artifacts
 	rm -f .Rhistory
 	rm -f *.RData
-	rm -f *.Rproj
-	rm -rf .Rproj.user
 
 cleanvars: setwd ## remove all local variables
 	@read -p "Do you want to remove all local variables in R? (1-yes, 2-no): " choice; \

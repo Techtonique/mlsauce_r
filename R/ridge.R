@@ -35,8 +35,11 @@
 #'
 #' print(obj$score(X_test, y_test))}
 #'
-RidgeRegressor <- function(reg_lambda=0.1)
-{
-
-  mlsauce::ms$RidgeRegressor(reg_lambda=reg_lambda)
+RidgeRegressor <- function(reg_lambda=0.1 ,       
+                           venv_path = "./venv",
+                           ...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
+  ms$RidgeRegressor(reg_lambda=reg_lambda)
 }

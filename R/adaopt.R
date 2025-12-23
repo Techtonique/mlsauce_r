@@ -68,10 +68,14 @@ AdaOpt <- function(n_iterations=50L,
                   n_clusters_input=0,
                   clustering_method="kmeans",
                   cluster_scaling="standard",
-                  seed=123L)
-{
+                  seed=123L, 
+                  venv_path = "./venv",
+                  ...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
 
-  mlsauce::ms$AdaOpt(n_iterations=n_iterations,
+  ms$AdaOpt(n_iterations=n_iterations,
             learning_rate=learning_rate,
             reg_lambda=reg_lambda,
             reg_alpha=reg_alpha,

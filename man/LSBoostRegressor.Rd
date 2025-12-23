@@ -22,7 +22,9 @@ LSBoostRegressor(
   clustering_method = "kmeans",
   cluster_scaling = "standard",
   degree = 0,
-  weights_distr = "uniform"
+  weights_distr = "uniform",
+  venv_path = "./venv",
+  ...
 )
 }
 \arguments{

@@ -9,7 +9,6 @@ GenericBoostingClassifier(
   n_estimators = 100L,
   learning_rate = 0.1,
   n_hidden_features = 5L,
-  reg_lambda = 0.1,
   row_sample = 1,
   col_sample = 1,
   dropout = 0,
@@ -22,7 +21,9 @@ GenericBoostingClassifier(
   clustering_method = "kmeans",
   cluster_scaling = "standard",
   degree = NULL,
-  weights_distr = "uniform"
+  weights_distr = "uniform",
+  venv_path = "./venv",
+  ...
 )
 }
 \arguments{
@@ -35,8 +36,6 @@ GenericBoostingClassifier(
 \item{n_hidden_features:}{int}
 
 \item{number}{of nodes in successive hidden layers.}
-
-\item{reg_lambda:}{float, L2 regularization parameter for successive errors in the optimizer (at training time).}
 
 \item{row_sample:}{float, percentage of rows chosen from the training set.}
 
@@ -71,6 +70,8 @@ An object of class GenericBoostingClassifier
 GenericBoosting classifier
 }
 \examples{
+
+# See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
 
 library(datasets)
 

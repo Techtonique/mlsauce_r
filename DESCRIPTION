@@ -1,7 +1,7 @@
 Package: mlsauce
 Title: Miscellaneous Statistical/Machine Learning stuff
-Version: 0.25.3
-Date: 2025-07-12 
+Version: 0.37.0
+Date: 2025-12-23
 Author: T. Moudiki
 Maintainer: T. Moudiki <thierry.moudiki@gmail.com>
 Description: Miscellaneous Statistical/Machine Learning stuff.
@@ -11,7 +11,7 @@ Suggests: Rcpp, misc
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.2
 Config/reticulate:
     required-modules: scikit-learn, numpy, scipy, pandas
 Remotes: thierrymoudiki/misc

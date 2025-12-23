@@ -36,9 +36,14 @@
 #'
 #' print(obj$score(X_test, y_test))}
 #'
-StumpClassifier <- function(bins="auto")
-{
-  mlsauce::ms$StumpClassifier(bins=bins)
+StumpClassifier <- function(bins="auto", 
+                            venv_path = "./venv",
+                            ...) {
+  
+  # Lazy load sklearn only when needed
+  ms <- get_mlsauce(venv_path)
+  
+  ms$StumpClassifier(bins=bins)
 }
 
 

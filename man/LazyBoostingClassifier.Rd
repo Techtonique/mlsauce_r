@@ -10,10 +10,12 @@ LazyBoostingClassifier(
   custom_metric = NULL,
   predictions = FALSE,
   sort_by = "Accuracy",
-  random_state = 42,
+  random_state = 42L,
   estimators = "all",
   preprocess = FALSE,
-  n_jobs = NULL
+  n_jobs = NULL,
+  venv_path = "./venv",
+  ...
 )
 }
 \arguments{
@@ -42,6 +44,8 @@ LazyBoostingClassifier object
 Lazy Generic Boosting Classifier (AutoML Hold-out set validation)
 }
 \examples{
+
+# See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
 
 library(mlsauce)
 library(datasets)
