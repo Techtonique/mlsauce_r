@@ -9,7 +9,7 @@ get_sklearn <- function(venv_path = "./venv") {
   reticulate::import("sklearn", 
                      delay_load = TRUE)
 }
-get_sklearn <- memoise::memoize(get_sklearn)
+#get_sklearn <- memoise::memoize(get_sklearn)
 
 #' @export  
 get_sklearn_utils <- function(venv_path = "./venv") {
@@ -21,7 +21,7 @@ get_sklearn_utils <- function(venv_path = "./venv") {
   reticulate::import("sklearn.utils", 
                      delay_load = TRUE)
 }
-get_sklearn_utils <- memoise::memoize(get_sklearn_utils)
+#get_sklearn_utils <- memoise::memoize(get_sklearn_utils)
 
 #' @export  
 get_sklearn_base <- function(venv_path = "./venv") {
