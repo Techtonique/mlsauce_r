@@ -34,7 +34,8 @@
 #'
 #' obj$fit(X_train, y_train)
 #'
-#' print(obj$score(X_test, y_test))}
+#' print(obj$score(X_test, y_test))
+#' }
 #'
 StumpClassifier <- function(bins="auto", 
                             venv_path = "./venv",

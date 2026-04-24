@@ -46,7 +46,7 @@ Lazy Generic Boosting Regressor (AutoML Hold-out set validation)
 \examples{
 
 # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
-
+\dontrun{
 library(mlsauce)
 library(datasets)
 
@@ -71,5 +71,5 @@ obj <- LazyBoostingRegressor(verbose=0, ignore_warnings=TRUE,
                               custom_metric=NULL, preprocess=FALSE)
 
 obj$fit(X_train, X_test, y_train, y_test)
-
+}
 }

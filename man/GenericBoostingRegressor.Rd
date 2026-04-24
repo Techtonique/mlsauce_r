@@ -73,6 +73,7 @@ GenericBoosting Regressor
 
 # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
 
+\dontrun{
 library(datasets)
 
 X <- as.matrix(datasets::mtcars[, -1])
@@ -88,12 +89,18 @@ y_train <- as.double(y[train_index])
 X_test <- as.matrix(X[test_index, ])
 y_test <- as.double(y[test_index])
 
-obj <- mlsauce::GenericBoostingRegressor()
+
+sklearn <- nnetsauce::get_sklearn()
+
+obj2 <- sklearn$linear_model$LinearRegression()
+
+obj <- mlsauce::GenericBoostingRegressor(obj2)
 
 print(obj$get_params())
 
 obj$fit(X_train, y_train)
 
-print(obj$score(X_test, y_test))
+print(sqrt(mean((obj$predict(X_test) - y_test)**2)))
+}
 
 }

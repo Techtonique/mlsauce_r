@@ -72,7 +72,7 @@ GenericBoosting classifier
 \examples{
 
 # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
-
+\dontrun{
 library(datasets)
 
 X <- as.matrix(iris[, 1:4])
@@ -88,12 +88,29 @@ y_train <- as.integer(y[train_index])
 X_test <- as.matrix(X[test_index, ])
 y_test <- as.integer(y[test_index])
 
-obj <- mlsauce::GenericBoostingClassifier()
+sklearn <- nnetsauce::get_sklearn()
+
+obj2 <- sklearn$tree$DecisionTreeRegressor()
+
+obj <- mlsauce::GenericBoostingClassifier(obj2)
 
 print(obj$get_params())
 
 obj$fit(X_train, y_train)
 
 print(obj$score(X_test, y_test))
+
+sklearn <- nnetsauce::get_sklearn()
+
+obj2 <- sklearn$linear_model$LinearRegression()
+
+obj <- mlsauce::GenericBoostingClassifier(obj2)
+
+print(obj$get_params())
+
+obj$fit(X_train, y_train)
+
+print(obj$score(X_test, y_test))
+}
 
 }

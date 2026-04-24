@@ -34,7 +34,8 @@
 #'
 #' obj$fit(X_train, y_train)
 #'
-#' print(obj$score(X_test, y_test))}
+#' print(obj$score(X_test, y_test))
+#' }
 #'
 LassoRegressor <- function(reg_lambda=0.1, 
                            max_iter=10L, 

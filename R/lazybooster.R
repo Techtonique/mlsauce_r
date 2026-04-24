@@ -21,6 +21,7 @@
 #' 
 #' # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
 #' 
+#' \dontrun{ 
 #' library(mlsauce)
 #' library(datasets)
 #' 
@@ -45,7 +46,7 @@
 #'                               custom_metric=NULL, preprocess=FALSE)
 #' 
 #' obj$fit(X_train, X_test, y_train, y_test)
-#' 
+#' }
 #' @export
 LazyBoostingClassifier <- function(verbose=0,
         ignore_warnings=TRUE,
@@ -95,7 +96,7 @@ LazyBoostingClassifier <- function(verbose=0,
 #' @examples
 #' 
 #' # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
-#' 
+#' \dontrun{
 #' library(mlsauce)
 #' library(datasets)
 #' 
@@ -120,7 +121,7 @@ LazyBoostingClassifier <- function(verbose=0,
 #'                               custom_metric=NULL, preprocess=FALSE)
 #' 
 #' obj$fit(X_train, X_test, y_train, y_test)
-#' 
+#' }
 #' @export 
 LazyBoostingRegressor <- function(verbose=0,
         ignore_warnings=TRUE,

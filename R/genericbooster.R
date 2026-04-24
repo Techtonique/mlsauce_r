@@ -29,7 +29,7 @@
 #' @examples
 #' 
 #' # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
-#'
+#' \dontrun{
 #' library(datasets)
 #'
 #' X <- as.matrix(iris[, 1:4])
@@ -68,6 +68,7 @@
 #' obj$fit(X_train, y_train)
 #'
 #' print(obj$score(X_test, y_test))
+#' }
 #' 
 GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
                               learning_rate=0.1,
@@ -146,6 +147,7 @@ GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
 #' 
 #' # See https://thierrymoudiki.github.io/blog/2024/10/14/r/genericboosting-r for advanced examples
 #'
+#' \dontrun{
 #' library(datasets)
 #'
 #' X <- as.matrix(datasets::mtcars[, -1])
@@ -173,7 +175,8 @@ GenericBoostingClassifier <- function(base_model=NULL, n_estimators=100L,
 #' obj$fit(X_train, y_train)
 #'
 #' print(sqrt(mean((obj$predict(X_test) - y_test)**2)))
-#'
+#' }
+#' 
 GenericBoostingRegressor <- function(base_model=NULL, n_estimators=100L,
                               learning_rate=0.1,
                               n_hidden_features=5L,

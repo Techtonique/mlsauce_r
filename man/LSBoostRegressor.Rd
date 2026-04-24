@@ -18,10 +18,10 @@ LSBoostRegressor(
   seed = 123L,
   solver = c("ridge", "lasso"),
   activation = "relu",
-  n_clusters = 0,
+  n_clusters = 0L,
   clustering_method = "kmeans",
   cluster_scaling = "standard",
-  degree = 0,
+  degree = 1L,
   weights_distr = "uniform",
   venv_path = "./venv",
   ...
@@ -96,6 +96,7 @@ print(obj$get_params())
 
 obj$fit(X_train, y_train)
 
-print(obj$score(X_test, y_test))}
+print(obj$score(X_test, y_test))
+}
 
 }
